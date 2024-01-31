@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package dsapostfixsteps;
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
 
 
 /**
  *
- * @author ganin
+ * @author ganindudesh
  */
 public class DSAPostfixSteps {
     static Scanner scanner = new Scanner(System.in);
@@ -19,21 +17,21 @@ public class DSAPostfixSteps {
     public static void main(String[] args) {
         System.out.println("Enter the postfix expression :\n");
         String expression = scanner.nextLine();
-//        String expression = "ABC*+DE-/";
+
         printInstructions(expression);
-        // TODO code application logic here
+
     }
     
     public static boolean isAnOperator(char c) {
         return c == '+' || c == '-' || c == '*' || c == '/';
-    }
+    } // returns as true if the shown condition fulfills
     
     public static void printInstructions(String expression){
-        int tempcounter = 1;
-        Stack<String> stack = new Stack<>();
+        int tempcounter = 1; //to keep tracking the temporary variable
+        Stack<String> stack = new Stack<>(); 
         
         for (char c : expression.toCharArray() ){
-            String ch = String.valueOf(c);
+            String ch = String.valueOf(c); //used to make the relevant c to a string in case of use
             
             if (isAnOperator(c)){
                 if (stack.size() < 2) {
@@ -42,9 +40,9 @@ public class DSAPostfixSteps {
             }
                 stepsIfAnOperator(c, stack.pop(), stack.pop(), "TEMP"+tempcounter);
                 stack.push("TEMP"+tempcounter);
-                tempcounter++;
+                tempcounter++; //setting the temporary variable counter to the next
             }else{
-                stack.push(ch);
+                stack.push(ch); //pushing the character as a string into the stack
             }
         }
     }
