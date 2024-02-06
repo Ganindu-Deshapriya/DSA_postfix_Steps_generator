@@ -35,7 +35,7 @@ public class DSAPostfixSteps {
             
             if (isAnOperator(c)){
                 if (stack.size() < 2) {
-                System.out.println("Invalid postfix expression");
+                System.err.println("Can't continue,Invalid postfix expression!");
                 return; // Exit the method if there are not enough operands for the operator
             }
                 stepsIfAnOperator(c, stack.pop(), stack.pop(), "TEMP"+tempcounter);
